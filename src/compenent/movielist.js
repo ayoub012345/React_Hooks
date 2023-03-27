@@ -40,22 +40,29 @@ function Movielist()
      {
             return film.map(film=>{return (<Moviecard title={film.title} posterURL={film.posterURL} description={film.description} rating={film.rating}/>)})
      }
-    function Tri_rate()
+    // function Tri_rate()
+    // {
+    //     let x=document.getElementById("rt").value;
+    //     var flmx=filmscr.filter(fil =>fil.rating >= x)
+    //     setFilm(flmx);
+    // }
+    function tri()
     {
-        let x=document.getElementById("rt").value;
+       let x=document.getElementById("rt").value;
         var flmx=filmscr.filter(fil =>fil.rating >= x)
+        let xx=document.getElementById("tt").value;
+        var flmx=flmx.filter(fil => fil.title.toUpperCase().includes(xx.toUpperCase()) );
         setFilm(flmx);
     }
-    function Tri_titl()
-    {
-        let x=document.getElementById("tt").value;
-        var flmx=filmscr.filter(fil => fil.title.toUpperCase().includes(x.toUpperCase()) );
-        setFilm(flmx);
-    }
+    // function Tri_titl()
+    // {
+    //     let x=document.getElementById("tt").value;
+    //     var flmx=filmscr.filter(fil => fil.title.toUpperCase().includes(x.toUpperCase()) );
+    //     setFilm(flmx);
+    // }
     return(
         <div id="movie-card-list">
-            <input className="btn_filter" type="Text" id="tt" /> <button className="btn_filter" onClick={Tri_titl} >Filter par title</button>
-            <input className="btn_filter" type="Number" id="rt" max="5" min="0" /> <button className="btn_filter" onClick={Tri_rate} >Filter par rate</button>
+            <input className="btn_filter" type="Text" id="tt" /><input className="btn_filter" type="Number" id="rt" max="5" min="0" /> <button className="btn_filter" onClick={tri} >Filter</button>
             {afficher()}
             <>
             <div className="login-root">
